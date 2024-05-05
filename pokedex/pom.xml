@@ -13,4 +13,15 @@
         <maven.compiler.target>17</maven.compiler.target>
     </properties>
 
+    <dependencies>
+        <!-- Otras dependencias -->
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>8.4.0</version>
+            <scope>system</scope>
+            <systemPath>${basedir}/lib/mysql-connector-j-8.4.0.jar</systemPath>
+        </dependency>
+    </dependencies>
+
 </project>

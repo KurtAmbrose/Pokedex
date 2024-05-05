@@ -3,18 +3,21 @@ package com.Frames;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Dimension;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-
 import javax.swing.*;
+import java.sql.*;
+public class FramePrincipal extends javax.swing.JFrame {
+    
+    Connection con;
 
-public class FramePrincipal extends JFrame{
-
-    public FramePrincipal(){
+    /**
+     * Creates new form pokedex
+     */
+    public FramePrincipal(Connection con) {
+        this.con = con;
         initComponents();
     }
-                      
+
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">                          
     private void initComponents() {
 
         jCheckBox1 = new javax.swing.JCheckBox();
@@ -31,7 +34,6 @@ public class FramePrincipal extends JFrame{
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
@@ -108,10 +110,11 @@ public class FramePrincipal extends JFrame{
         jButton1.setBackground(new java.awt.Color(153, 153, 153));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("../Icons/cruz (1).png"))); // NOI18N
         jButton1.setBorder(null);
-
-        jButton2.setBackground(new java.awt.Color(153, 153, 153));
-        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("../Icons/aprobado.png"))); // NOI18N
-        jButton2.setBorder(null);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton5.setBackground(new java.awt.Color(153, 153, 153));
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("../Icons/flecha-izquierda.png"))); // NOI18N
@@ -137,15 +140,9 @@ public class FramePrincipal extends JFrame{
                         .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addComponent(jButton1)
-                                .addGap(64, 64, 64))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jButton2)
-                                .addGap(16, 16, 16))))))
+                        .addGap(44, 44, 44)
+                        .addComponent(jButton1)
+                        .addGap(33, 33, 33))))
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,7 +151,11 @@ public class FramePrincipal extends JFrame{
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(18, 18, Short.MAX_VALUE)
+                        .addGap(27, 27, 27)
+                        .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(filler2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -163,17 +164,10 @@ public class FramePrincipal extends JFrame{
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                     .addComponent(jButton5)
                                     .addComponent(jButton6))
-                                .addGap(46, 46, 46))))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(27, 27, 27)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(17, 17, 17)
+                                .addGap(46, 46, 46))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                                 .addComponent(jButton1)
-                                .addGap(14, 14, 14)
-                                .addComponent(jButton2)))
-                        .addContainerGap())))
+                                .addGap(44, 44, 44))))))
         );
 
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
@@ -252,16 +246,34 @@ public class FramePrincipal extends JFrame{
         );
 
         pack();
-    }// </editor-fold>                        
+    } 
+    
+    @SuppressWarnings("unused")
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {      
+        
+        Statement stmnt;
+        ResultSet res;
+
+        try {
+            stmnt = con.createStatement();
+            res = stmnt.executeQuery("SELECT * FROM pokedex.regiones");
+
+            while(res.next())
+            {
+                System.out.println(res.getString(2));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
+    }
 
     /**
      * @param args the command line arguments
      */
-
-    // Variables declaration - do not modify                     
+                    
     private javax.swing.Box.Filler filler2;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JCheckBox jCheckBox1;
@@ -278,5 +290,5 @@ public class FramePrincipal extends JFrame{
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
     private javax.swing.JSeparator jSeparator1;
-
+    // End of variables declaration                   
 }
