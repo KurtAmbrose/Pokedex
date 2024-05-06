@@ -30,7 +30,6 @@ public class FramePrincipal extends javax.swing.JFrame {
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
@@ -114,10 +113,6 @@ public class FramePrincipal extends javax.swing.JFrame {
             .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, 100, Short.MAX_VALUE)
         );
 
-        jButton1.setBackground(new java.awt.Color(153, 153, 153));
-        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("../Icons/cruz (1).png"))); // NOI18N
-        jButton1.setBorder(null);
-
         jButton5.setBackground(new java.awt.Color(153, 153, 153));
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("../Icons/flecha-izquierda.png"))); 
         jButton5.addActionListener(new java.awt.event.ActionListener() {
@@ -153,7 +148,6 @@ public class FramePrincipal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 33, Short.MAX_VALUE)
                         .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(44, 44, 44)
-                        .addComponent(jButton1)
                         .addGap(33, 33, 33))))
         );
         jPanel2Layout.setVerticalGroup(
@@ -178,7 +172,6 @@ public class FramePrincipal extends javax.swing.JFrame {
                                     .addComponent(jButton6))
                                 .addGap(46, 46, 46))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButton1)
                                 .addGap(44, 44, 44))))))
         );
 
@@ -267,14 +260,14 @@ public class FramePrincipal extends javax.swing.JFrame {
             {
                 jLabel9.setText(res.getString(2));
                 jLabel8.setText(res.getString(3));
-                jLabel6.setText("<html>" + "Peso: " + res.getString(4) + "<br>Altura: " + res.getString(5) + "<br>Se registró " + res.getString(2) + " de " + res.getString(7) + "</html>");
+                jLabel6.setText("<html>" + "Peso: " + res.getString(4) + "<br>Altura: " + res.getString(5) + "<br>1er encuentro: " + res.getString(2) + " de " + res.getString(7) + "</html>");
             }
             else
             {
                 res.first();
                 jLabel9.setText(res.getString(2));
                 jLabel8.setText(res.getString(3));
-                jLabel6.setText("<html>" + "Peso: " + res.getString(4) + "<br>Altura: " + res.getString(5) + "<br>Se registró " + res.getString(2) + " de " + res.getString(7) + "</html>");
+                jLabel6.setText("<html>" + "Peso: " + res.getString(4) + "<br>Altura: " + res.getString(5) + "<br>1er encuentro: " + res.getString(2) + " de " + res.getString(7) + "</html>");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -288,14 +281,14 @@ public class FramePrincipal extends javax.swing.JFrame {
             {
                 jLabel9.setText(res.getString(2));
                 jLabel8.setText(res.getString(3));
-                jLabel6.setText("<html>" + "Peso: " + res.getString(4) + "<br>Altura: " + res.getString(5) + "<br>Se registró " + res.getString(2) + " de " + res.getString(7) + "</html>");
+                jLabel6.setText("<html>" + "Peso: " + res.getString(4) + "<br>Altura: " + res.getString(5) + "<br>1er encuentro: " + res.getString(2) + " de " + res.getString(7) + "</html>");
             }
             else
             {
                 res.last();
                 jLabel9.setText(res.getString(2));
                 jLabel8.setText(res.getString(3));
-                jLabel6.setText("<html>" + "Peso: " + res.getString(4) + "<br>Altura: " + res.getString(5) + "<br>Se registró " + res.getString(2) + " de " + res.getString(7) + "</html>");
+                jLabel6.setText("<html>" + "Peso: " + res.getString(4) + "<br>Altura: " + res.getString(5) + "<br>1er encuentro: " + res.getString(2) + " de " + res.getString(7) + "</html>");
             }
         } catch (Exception e) {
             e.printStackTrace();
@@ -308,7 +301,6 @@ public class FramePrincipal extends javax.swing.JFrame {
      */
                     
     private javax.swing.Box.Filler filler2;
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JCheckBox jCheckBox1;
