@@ -177,6 +177,8 @@ public class FramePrincipal extends javax.swing.JFrame {
 
         jPanel5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0), 3));
 
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
         jPanel5Layout.setHorizontalGroup(
@@ -258,6 +260,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         try {
             if (res.next())
             {
+                jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource(".." + res.getString(6))));
                 jLabel9.setText(res.getString(2));
                 jLabel8.setText(res.getString(3));
                 jLabel6.setText("<html>" + "Peso: " + res.getString(4) + "<br>Altura: " + res.getString(5) + "<br>1er encuentro: " + res.getString(2) + " de " + res.getString(7) + "</html>");
@@ -265,6 +268,7 @@ public class FramePrincipal extends javax.swing.JFrame {
             else
             {
                 res.first();
+                jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource(".." + res.getString(6))));
                 jLabel9.setText(res.getString(2));
                 jLabel8.setText(res.getString(3));
                 jLabel6.setText("<html>" + "Peso: " + res.getString(4) + "<br>Altura: " + res.getString(5) + "<br>1er encuentro: " + res.getString(2) + " de " + res.getString(7) + "</html>");
@@ -279,6 +283,7 @@ public class FramePrincipal extends javax.swing.JFrame {
         try {
             if (res.previous())
             {
+                jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource(".." + res.getString(6))));
                 jLabel9.setText(res.getString(2));
                 jLabel8.setText(res.getString(3));
                 jLabel6.setText("<html>" + "Peso: " + res.getString(4) + "<br>Altura: " + res.getString(5) + "<br>1er encuentro: " + res.getString(2) + " de " + res.getString(7) + "</html>");
@@ -286,6 +291,7 @@ public class FramePrincipal extends javax.swing.JFrame {
             else
             {
                 res.last();
+                jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource(".." + res.getString(6))));
                 jLabel9.setText(res.getString(2));
                 jLabel8.setText(res.getString(3));
                 jLabel6.setText("<html>" + "Peso: " + res.getString(4) + "<br>Altura: " + res.getString(5) + "<br>1er encuentro: " + res.getString(2) + " de " + res.getString(7) + "</html>");
