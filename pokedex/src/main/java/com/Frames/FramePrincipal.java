@@ -1,19 +1,14 @@
 package com.Frames;
-
-import java.awt.BorderLayout;
-import java.awt.Color;
-import java.awt.Dimension;
-import javax.swing.*;
 import java.sql.*;
 public class FramePrincipal extends javax.swing.JFrame {
     
-    Connection con;
+    ResultSet res;
 
     /**
      * Creates new form pokedex
      */
-    public FramePrincipal(Connection con) {
-        this.con = con;
+    public FramePrincipal(ResultSet res) {
+        this.res = res;
         initComponents();
     }
 
@@ -30,6 +25,8 @@ public class FramePrincipal extends javax.swing.JFrame {
         jPanel3 = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         filler2 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
         jPanel4 = new javax.swing.JPanel();
         jLabel6 = new javax.swing.JLabel();
@@ -50,7 +47,7 @@ public class FramePrincipal extends javax.swing.JFrame {
 
         jLabel2.setFont(new java.awt.Font("Krungthep", 1, 14)); // NOI18N
         jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.TRAILING);
-        jLabel2.setText("POKEDEX OF\nANOMALIES");
+        jLabel2.setText("YOUR POKEDEX");
 
         jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("../Icons/superball.png"))); // NOI18N
 
@@ -64,10 +61,14 @@ public class FramePrincipal extends javax.swing.JFrame {
         jPanel3.setBackground(new java.awt.Color(102, 204, 0));
 
         jLabel4.setFont(new java.awt.Font("Krungthep", 1, 13)); // NOI18N
-        jLabel4.setText("POKEMON NAME");
+        jLabel4.setText("POKEMON NAME: ");
 
         jLabel5.setFont(new java.awt.Font("Krungthep", 0, 12)); // NOI18N
         jLabel5.setText("TYPE(S)");
+
+        jLabel8.setFont(new java.awt.Font("Krungthep", 0, 12)); // NOI18N
+
+        jLabel9.setFont(new java.awt.Font("Krungthep", 1, 13)); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -76,9 +77,13 @@ public class FramePrincipal extends javax.swing.JFrame {
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel5)
-                .addGap(29, 29, 29))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jLabel8)
+                .addGap(13, 13, 13))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -86,13 +91,15 @@ public class FramePrincipal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(jLabel4))
+                    .addComponent(jLabel4)
+                    .addComponent(jLabel8)
+                    .addComponent(jLabel9))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jPanel4.setBackground(new java.awt.Color(102, 204, 0));
 
-        jLabel6.setFont(new java.awt.Font("Krungthep", 1, 13)); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Krungthep", 1, 10)); // NOI18N
         jLabel6.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel6.setText("PUT A  DESCRIPTION  IN HERE"); // NOI18N
 
@@ -110,17 +117,22 @@ public class FramePrincipal extends javax.swing.JFrame {
         jButton1.setBackground(new java.awt.Color(153, 153, 153));
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("../Icons/cruz (1).png"))); // NOI18N
         jButton1.setBorder(null);
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
 
         jButton5.setBackground(new java.awt.Color(153, 153, 153));
-        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("../Icons/flecha-izquierda.png"))); // NOI18N
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("../Icons/flecha-izquierda.png"))); 
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });// NOI18N
 
         jButton6.setBackground(new java.awt.Color(153, 153, 153));
-        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("../Icons/boton-de-play.png"))); // NOI18N
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("../Icons/boton-de-play.png"))); 
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt, res);
+            }
+        });// NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -210,7 +222,7 @@ public class FramePrincipal extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jPanel5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 169, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(26, 26, 26)
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(44, 44, 44))
@@ -249,24 +261,47 @@ public class FramePrincipal extends javax.swing.JFrame {
     } 
     
     @SuppressWarnings("unused")
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {      
-        
-        Statement stmnt;
-        ResultSet res;
-
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt, ResultSet res) {
         try {
-            stmnt = con.createStatement();
-            res = stmnt.executeQuery("SELECT * FROM pokedex.regiones");
-
-            while(res.next())
+            if (res.next())
             {
-                System.out.println(res.getString(2));
+                jLabel9.setText(res.getString(2));
+                jLabel8.setText(res.getString(3));
+                jLabel6.setText("<html>" + "Peso: " + res.getString(4) + "<br>Altura: " + res.getString(5) + "<br>Se registró " + res.getString(2) + " de " + res.getString(7) + "</html>");
+            }
+            else
+            {
+                res.first();
+                jLabel9.setText(res.getString(2));
+                jLabel8.setText(res.getString(3));
+                jLabel6.setText("<html>" + "Peso: " + res.getString(4) + "<br>Altura: " + res.getString(5) + "<br>Se registró " + res.getString(2) + " de " + res.getString(7) + "</html>");
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
-        
     }
+
+    @SuppressWarnings("unused")
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {                                         
+        try {
+            if (res.previous())
+            {
+                jLabel9.setText(res.getString(2));
+                jLabel8.setText(res.getString(3));
+                jLabel6.setText("<html>" + "Peso: " + res.getString(4) + "<br>Altura: " + res.getString(5) + "<br>Se registró " + res.getString(2) + " de " + res.getString(7) + "</html>");
+            }
+            else
+            {
+                res.last();
+                jLabel9.setText(res.getString(2));
+                jLabel8.setText(res.getString(3));
+                jLabel6.setText("<html>" + "Peso: " + res.getString(4) + "<br>Altura: " + res.getString(5) + "<br>Se registró " + res.getString(2) + " de " + res.getString(7) + "</html>");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    } 
+    
 
     /**
      * @param args the command line arguments
@@ -284,6 +319,8 @@ public class FramePrincipal extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
